@@ -31,6 +31,7 @@ namespace DeckOfCards
 
         public Suit suit {get;}
         public Rank rank {get;}
+        //getters only
 
         public Card(Rank cardRank, Suit cardSuit) {
             rank = cardRank;
