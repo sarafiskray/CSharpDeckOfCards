@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DeckOfCards
 {
@@ -6,7 +7,8 @@ namespace DeckOfCards
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Card testCard = new Card(Rank.Eight, Suit.Hearts);
+            Console.WriteLine(testCard.ToString());
         }
     }
 }

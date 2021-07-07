@@ -2,9 +2,7 @@ using System;
 
 namespace DeckOfCards
 {
-    class Card
-    {
-        enum Suit
+    enum Suit
         {
             Diamonds,
             Clubs,
@@ -12,7 +10,7 @@ namespace DeckOfCards
             Spades
         }
 
-        enum Rank 
+    enum Rank 
         {
             Ace = 1,
             Two,
@@ -28,5 +26,21 @@ namespace DeckOfCards
             Queen,
             King
         }
+    class Card
+    {
+
+        public Suit suit {get;}
+        public Rank rank {get;}
+
+        public Card(Rank cardRank, Suit cardSuit) {
+            rank = cardRank;
+            suit = cardSuit;
+        }
+
+        public override string ToString() {
+            return rank + " of " + suit;
+        }
+
+
     }
 }
