@@ -5,58 +5,68 @@ namespace DeckOfCards
 {
     class Program
     {
+        //Deck currDeck;
         static void Main(string[] args)
         {
-            // Display title as the C# console calculator app.
-            Console.WriteLine("Deck of Cards Simulator in C#\r");
-            Console.WriteLine("-----------------------------\n");
-            string choice = "";
+            //newlines and tabs for formatting
+            Console.WriteLine("\n\tDeck of Cards Simulator in C#\r");
+            Console.WriteLine("\t-----------------------------\n");
 
-            // Ask the user to choose an option.
+            string choice = "";
+            Deck currDeck = new Deck();
+
             do {
-                Console.WriteLine("Choose an option from the following list:");
+                Console.WriteLine("\nInput a letter to pick an action:\n");
                 Console.WriteLine("\tn - Get a new deck");
                 Console.WriteLine("\ts - Shuffle the current deck");
-                Console.WriteLine("\td - Draw top card from deck");
-                Console.WriteLine("\tr - See rest of cards in deck");
-                Console.WriteLine("\tq - Quit");
+                Console.WriteLine("\tm - Get a new deck and shuffle it");
+                Console.WriteLine("\td - Draw top card from current deck");
+                Console.WriteLine("\tr - See rest of cards in current deck");
+                Console.WriteLine("\tq - Quit\n");
                 Console.Write("What would you like to do? ");
                 choice = Console.ReadLine();
                 switch (choice)
                 {
                     case "n":
                         //new deck
-                        Console.WriteLine("you chose a");
+                        currDeck = new Deck();
+                        Console.WriteLine("\nA new deck has been created! It has not been shuffled.");
                         break;
                     case "s":
                         //shuffle
-                        Console.WriteLine("you chose s");
+                        currDeck.shuffle();
+                        Console.WriteLine("\nYou shuffled the deck!");
+                        break;
+                    case "m":
+                        currDeck = new Deck();
+                        currDeck.shuffle();
+                        Console.WriteLine("\nA new deck has been created and shuffled!");
                         break;
                     case "d":
                         //draw card
-                        Console.WriteLine("you chose m");
+                        Card top = currDeck.drawCard();
+                        Console.WriteLine("\nYou drew the " + top.ToString() + ".");
                         break;
                     case "r":
                         //see rest of cards
-                        Console.WriteLine("you chose d");
+                        Console.WriteLine("\nHere are the rest of the cards in the deck:\n");
+                        foreach (Card card in currDeck.cards) {
+                            Console.WriteLine(card.ToString());
+                        }
+                        //Console.WriteLine("\n");
+                        break;
+                    case "q":
+                        break;
+                    default:
+                        Console.WriteLine("\nPlease choose one of the given options.");
                         break;
                 }
             } while (choice != "q");
-            //Card testCard = new Card(Rank.Eight, Suit.Hearts);
-            //Console.WriteLine(testCard.ToString());
-            Deck testDeck = new Deck();
-        
-            testDeck.drawCard();
-            testDeck.drawCard();
-            testDeck.drawCard();
-            foreach (Card card in testDeck.cards) {
-                Console.WriteLine(card.ToString());
-            }
-            Console.WriteLine("...");
-            testDeck.shuffle();
-            foreach (Card card in testDeck.cards) {
-                Console.WriteLine(card.ToString());
-            }
+            
+            Console.WriteLine("\nThanks for playing!");
+            
+            
+            
             
         }
     }

@@ -30,11 +30,11 @@ namespace DeckOfCards
         }
 
         public Card drawCard() {
-            //I chose index cards.Count - 1 instead of 0
+            //I chose index 0
             //to represent the top of the deck
-            Card topCard = cards[cards.Count - 1];
+            Card topCard = cards[0];
             cards.Remove(topCard);
-            Console.WriteLine(topCard.ToString());
+            //Console.WriteLine(topCard.ToString());
             return topCard;
         }
 
@@ -50,8 +50,21 @@ namespace DeckOfCards
             }
         }
 
-        public List<Card> showRestOfDeck() {
-            return cards;
+        public void simpleWar() {
+            if (cards.Count < 10) {
+                Console.WriteLine("\nThere must be at least 10 cards in the deck to play!");
+                return;
+            }
+            else {
+                int playerScore = 0;
+                int cpuScore = 0;
+                
+                    Card playerCard = drawCard();
+                    Card cpuCard = drawCard();
+                    Console.WriteLine(playerCard.ToString());
+                
+
+            }
         }
 
 
