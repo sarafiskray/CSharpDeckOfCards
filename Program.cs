@@ -22,6 +22,7 @@ namespace DeckOfCards
                 Console.WriteLine("\tm - Get a new deck and shuffle it");
                 Console.WriteLine("\td - Draw top card from current deck");
                 Console.WriteLine("\tr - See rest of cards in current deck");
+                Console.WriteLine("\tw - Play simple game of war");
                 Console.WriteLine("\tq - Quit\n");
                 Console.Write("What would you like to do? ");
                 choice = Console.ReadLine();
@@ -54,6 +55,9 @@ namespace DeckOfCards
                             Console.WriteLine(card.ToString());
                         }
                         //Console.WriteLine("\n");
+                        break;
+                    case "w":
+                        currDeck.simpleWar();
                         break;
                     case "q":
                         break;

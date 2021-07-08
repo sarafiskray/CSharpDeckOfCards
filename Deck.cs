@@ -50,20 +50,69 @@ namespace DeckOfCards
             }
         }
 
+        //added this for fun
+        //automatically shuffles deck
+        //cant play if there are less than 18 cards remaining in the deck
         public void simpleWar() {
-            if (cards.Count < 10) {
-                Console.WriteLine("\nThere must be at least 10 cards in the deck to play!");
+            if (cards.Count < 18) {
+                Console.WriteLine("\nThere must be at least 18 cards in the deck to play!");
                 return;
             }
             else {
+                Console.WriteLine("\nWelcome to Simple Game of War!");
+                Console.WriteLine("\nYou vs. the computer, first to 5 wins.");
+                shuffle();
+                Console.WriteLine("\nShuffling the deck...\n");
                 int playerScore = 0;
                 int cpuScore = 0;
-                
+                Console.WriteLine("Press enter to begin\n");
+                Console.ReadKey();
+                do {
                     Card playerCard = drawCard();
                     Card cpuCard = drawCard();
-                    Console.WriteLine(playerCard.ToString());
-                
 
+                    Console.WriteLine("Your card is the " + playerCard.ToString() + ".");
+                    Console.WriteLine("Computer drew the " + cpuCard.ToString() + ".");
+                    
+                    int playerVal = (int)playerCard.rank;
+                    int cpuVal = (int)cpuCard.rank;
+
+                    if (playerVal > cpuVal) {
+                        Console.WriteLine("You win this round!\n");
+                        playerScore += 1;
+                    }
+                    else if (cpuVal > playerVal) {
+                        Console.WriteLine("Computer wins this round.\n");
+                        cpuScore += 1;
+                    }
+                    else {
+                        int playerSuit = (int)playerCard.suit;
+                        int cpuSuit = (int)cpuCard.suit;
+                        if (playerSuit > cpuSuit) {
+                            Console.WriteLine("You win this round!\n");
+                            playerScore += 1;
+                        }
+                        else {
+                            Console.WriteLine("Computer wins this round!\n");
+                            cpuScore += 1;
+                        }
+                    }
+
+                    Console.WriteLine("You: " + playerScore);
+                    Console.WriteLine("Computer: " + cpuScore);
+                    
+                    if (playerScore == 5) {
+                        Console.WriteLine("\nYou Win!\n");
+                        break;
+                    }
+                    else if (cpuScore == 5) {
+                        Console.WriteLine("\nComputer wins.\n");
+                        break;
+                    }
+                    Console.WriteLine("Press enter for next round\n");
+                    Console.ReadKey();
+
+                } while (cpuScore < 5 && playerScore < 5);
             }
         }
 

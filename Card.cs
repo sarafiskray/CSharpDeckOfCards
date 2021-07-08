@@ -4,7 +4,7 @@ namespace DeckOfCards
 {
     enum Suit
         {
-            Diamonds,
+            Diamonds = 0,
             Clubs,
             Hearts,
             Spades
@@ -38,6 +38,7 @@ namespace DeckOfCards
             suit = cardSuit;
         }
 
+        //ex. "Ace of Hearts"
         public override string ToString() {
             return rank + " of " + suit;
         }
