@@ -41,6 +41,11 @@ namespace DeckOfCards
         //I decided to use random so we get a different deck each time
         //additionally, I wanted to do it in one pass for optimal efficiency
         public void shuffle() {
+            //no shuffle if 1 or 0 cards
+            if (cards.Count <= 1) {
+                Console.WriteLine("\nThere are not enough cards to shuffle! ");
+                return;
+            }
             Random rand = new Random();
             for (int i = 0; i < cards.Count - 1; i++) {
                 int randIndex = rand.Next(i, cards.Count);
@@ -48,6 +53,7 @@ namespace DeckOfCards
                 cards[i] = cards[randIndex];
                 cards[randIndex] = temp;
             }
+            Console.WriteLine("\nYou shuffled the deck!");
         }
 
         //added this for fun

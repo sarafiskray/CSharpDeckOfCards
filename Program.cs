@@ -36,7 +36,7 @@ namespace DeckOfCards
                     case "s":
                         //shuffle
                         currDeck.shuffle();
-                        Console.WriteLine("\nYou shuffled the deck!");
+                        //Console.WriteLine("\nYou shuffled the deck!");
                         break;
                     case "m":
                         currDeck = new Deck();
@@ -45,14 +45,24 @@ namespace DeckOfCards
                         break;
                     case "d":
                         //draw card
-                        Card top = currDeck.drawCard();
-                        Console.WriteLine("\nYou drew the " + top.ToString() + ".");
+                        if (currDeck.cards.Count == 0) {
+                            Console.WriteLine("\nThere are no cards left in the deck!");
+                        }
+                        else {
+                            Card top = currDeck.drawCard();
+                            Console.WriteLine("\nYou drew the " + top.ToString() + ".");
+                        }
                         break;
                     case "r":
                         //see rest of cards
-                        Console.WriteLine("\nHere are the rest of the cards in the deck:\n");
-                        foreach (Card card in currDeck.cards) {
-                            Console.WriteLine(card.ToString());
+                        if (currDeck.cards.Count == 0) {
+                            Console.WriteLine("\nThere are no cards left in the deck!");
+                        }
+                        else {
+                            Console.WriteLine("\nHere are the rest of the cards in the deck:\n");
+                            foreach (Card card in currDeck.cards) {
+                                Console.WriteLine(card.ToString());
+                            }
                         }
                         //Console.WriteLine("\n");
                         break;
